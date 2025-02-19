@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Person Fun Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .fact-display {
+            margin: 20px 0;
+            font-size: 1.2em;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .fact-display {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cat Person Fun Facts</h1>
+        <div id="fact-display" class="fact-display">Click the button to see a fun fact!</div>
+        <button id="fact-button" class="btn">Show Random Fact</button>
+        <button id="twitter-button" class="btn">Share on Twitter</button>
+    </div>
+    <script>
+        const facts = [
+            "Cat people are often seen as more introverted than dog people.",
+            "Studies suggest that cat owners tend to be more intelligent than dog owners.",
+            "Cat people are usually more open-minded and creative.",
+            "Many cat owners report feeling less stressed and more relaxed around their cats.",
+            "Cat people often have a strong sense of independence, mirroring their feline friends.",
+            "Cat owners are more likely to be single than dog owners.",
+            "Cats are known to have a calming effect, which can benefit their owners' mental health.",
+            "Cat people often enjoy reading and spending time alone, reflecting their pets' solitary nature.",
+            "Many cat owners are passionate about animal welfare and rescue efforts.",
+            "Cat people tend to have a quirky sense of humor, often sharing funny cat memes and videos."
+        ];
+
+        document.getElementById('fact-button').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factDisplay = document.getElementById('fact-display');
+            factDisplay.style.opacity = 0;
+            setTimeout(() => {
+                factDisplay.textContent = facts[randomIndex];
+                factDisplay.style.opacity = 1;
+            }, 500);
+        });
+
+        document.getElementById('twitter-button').addEventListener('click', () => {
+            const fact = document.getElementById('fact-display').textContent;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fact)}`;
+            window.open(twitterUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
